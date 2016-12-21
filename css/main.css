@@ -1,0 +1,220 @@
+body {
+ 	margin: 0;
+    padding: 0;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    background-color: #cccccc;
+    }
+    	
+.header-box {
+    width: 100%;
+    height: 100px;
+    background-color: #31a9a5;
+    font-family: "微软雅黑";
+    color: #FFFFFF;
+}
+    	
+.header-left {
+    height: 60px;
+    width: 180px;
+    float: left;
+    padding-top: 20px;
+    padding-left: 20px;
+    /*background-color: #342421;*/
+    position: relative;
+    font-size: 12px;
+}
+    	
+.header-left .month {
+    margin-right: 10px;
+    line-height: 30px;
+    font-size: 30px;
+    float: left;
+    display: block;
+}
+    	
+.header-left .week {
+    width: 80px;
+    line-height: 15px;
+    float: left;
+    display: block;
+}
+    	
+.header-left .year {
+    float: left;
+}
+.header-left .year b{
+	font-size: 15px;
+}
+    	
+.header-right {
+    width: 40%;
+    height: 30px;
+    float: right;
+    padding-top: 10px;
+    margin-top: 10px;
+    margin-right: 30px;
+    /*background-color: #555445;*/
+}
+    	
+.header-right .jin {
+    display: block;
+    float: right;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    color: #31A9A5;
+}
+    	
+.title {
+    width: 100%;
+    height: 30px;
+    float: left;
+    /*background-color: #833232;*/
+}
+    	
+.title li {
+    width: 14.2%;
+    margin-top: 10px;
+    text-align: center;
+    list-style: none;
+    display: block;
+    float: left;
+    
+}
+    	
+.rili-main {
+	width: 100%;
+	height: 305px;
+    margin: 0px;
+    padding: 0px;
+    overflow: auto;
+    background-color: #FFFFFF;
+    position: relative;
+}
+    	
+.rili-main li {
+  	width: 14.2%;
+    height: 48px;
+    padding-top: 10px;
+    color: #00000;
+    font-size: 14px;
+    text-align: center;
+    display: list-item;
+    float: left;
+    list-style: none;
+    position: relative;
+}
+.rili-main .day-0{
+	color: #ADADAD;
+}
+.rili-main .day-1{
+	color: #333333;
+}
+.rili-box{
+    width: 34px;
+    height: 34px;
+    padding-top: 7px;
+    margin-left: 5px;
+}
+.rili-box .rili-tian{
+    /*border: 1px solid #31A9A5;*/
+    /*border-bottom: none;*/
+    /*border-radius: 10px;*/
+}
+.rili-box .rili-nongli{
+    line-height: 14px;
+    font-size: 10px;
+    color: #adadad;
+}
+/*上班状态*/
+.work{
+    width: 10px;
+    height: 10px;
+   	position: absolute;
+    top: 5px;
+    left: 35px;
+    font-size: 8px;
+}
+.color-red{
+	color: red;
+}
+.color-blue{
+	color: blue;
+}
+.color-green{
+	color: green;
+}
+
+.select-day{
+    height: 34px;
+    padding-top: 7px;
+    border: 1px solid #31A9A5;
+    border-radius: 20px;
+}
+.today{
+    height: 34px;
+    padding-top: 7px;
+    background-color: #31A9A5;
+    border: 1px solid #31A9A5;
+    border-radius: 20px;
+    color: #FFFFFF;
+}
+    	
+/*当日期被选择的时候隐藏农历*/
+.select-day .hidd{
+    display: none;
+}
+.nongli{
+	margin-top: 10px;
+	padding: 18px;
+	background-color: #FFFFFF;
+	font-size: 14px;
+	line-height: 18px;
+}
+
+.nongli-date{
+	font-size: 18px;
+	line-height: 30px;
+}
+.nongli-good{
+	font-size: 12px;
+	color: #31A9A5;
+	padding-bottom: 5px;
+}
+.nongli-bad{
+	font-size: 12px;
+	color: red;
+}
+
+/* // 固定在页面底部的菜单按钮*/
+.menu{
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	right: 10px;
+	bottom: 15px;
+	border-radius: 30px;
+	/*font-size: 40px;*/
+	/*line-height: 30px;*/
+	background-color: #31A9A5;
+	color: #FFFFFF;
+	text-align: center;
+}
+.menu .setting{
+	font-size: 30px;
+	line-height: 50px;
+}
+.menu a{
+	color: #FFFFFF;
+}
+.note{
+	background-color: #FFFFFF;
+	font-size: 14px;
+	line-height: 24px;
+	padding-bottom: 5px;
+}

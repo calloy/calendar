@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+</head>
+<body>
+	<div class="header-box">
+		<div id="riqi" class="header-left">
+			<span id="yue" class="month">12月</span>			
+			<span id="week" class="week">周一</span>
+			<span id="nian" class="year">2016年 <b  class="mui-icon mui-icon mui-icon-arrowdown"></b></span>
+			
+		</div> 
+		<div class="header-right">
+			<span id="today" class="jin">今</span>
+		</div>
+		<div class="title">
+			<li>一</li>
+			<li>二</li>
+			<li>三</li>
+			<li>四</li>
+			<li>五</li>
+			<li>六</li>
+			<li>日</li>
+		</div>
+	</div>
+	<ol id="day" class="rili-main"></ol>
+	<div class="nongli">
+		<div class="nongli-date"></div>
+		<div class="nongli-good"></div>
+		<div class="nongli-bad"></div>
+	</div>
+	<div class="note">
+		<p><b class="mui-icon mui-icon-home"></b>更多功能，请进入设置选项。</p>
+	</div>
+	<div id="popover" class="mui-popover">
+	  	<ul class="mui-table-view">
+		    <li class="mui-table-view-cell"><a href="#" id="calendar">日历设置</a></li>
+		    <li class="mui-table-view-cell"><a href="#" id="update">检测更新</a></li>
+		    <!--<li class="mui-table-view-cell"><a href="#">Item3</a></li>-->
+		    <li class="mui-table-view-cell"><a href="#" id="shang">客官，赏呗！</a></li>
+		    <li class="mui-table-view-cell"><a href="#" id="about">关于</a></li>
+	  	</ul>
+	  </div>
+	<div id="menu" class="menu">
+		<!--<span class="fa  fa-icon-reorder"></span>-->
+		<a href="#popover" id="openPopover"><span class="mui-icon mui-icon-gear setting"></span></a>	
+	</div>
+	<script src="js/rili.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/function.js" type="text/javascript" charset="utf-8"></script>
+  	<script type="text/javascript" charset="UTF-8">
+	    var day = new Date();
+		var m = day.getMonth();
+  		var y = day.getFullYear();
+  		var yy = document.getElementById("yue");
+  		var nn = document.getElementById('nian');
+  		var ww = document.getElementById('week');
+//    	mui.init();
+//		mui.ready(function(){
+//		});
+      	mui.init();
+      	mui.plusReady(function(){
+  			yy.innerHTML= (m+1) + "月";
+  			nn.innerHTML = y + "年";
+			mycalendar(day.getFullYear(),day.getMonth(),day.getDate());
+      		//右滑事件
+  			document.getElementById("day").addEventListener("swiperight",function(){
+  				//得到右滑 下一个月显示
+  				m = m - 1;
+  				if(m < 0){
+  					m = 11;
+  					y = y - 1;
+  				}
+  				var yy = document.getElementById("yue");
+  				var nn = document.getElementById('nian');
+  				yy.innerHTML= (m+1) + "月";
+  				nn.innerHTML = y + "年";
+//				ww.innerHTML = xinqi[day.getDay()];
+				mycalendar(y,m,day.getDate()); 
+  			});
+  			//左滑事件
+  			document.getElementById("day").addEventListener("swipeleft",function(){
+  				//得到左滑 上一个月显示
+				m = m + 1;
+  				if(m > 11){
+  					m = 0;
+  					y = y + 1;
+  				}
+  				var yy = document.getElementById("yue");
+  				var nn = document.getElementById('nian');
+  				yy.innerHTML= (m+1) + "月";
+  				nn.innerHTML = y + "年";
+				mycalendar(y,m,day.getDate()); 
+  			});  	
+  			//返回今天
+  			document.getElementById("today").addEventListener("tap",function(){
+  				y = day.getFullYear();
+  				m = day.getMonth();
+  				var yy = document.getElementById("yue");
+  				var nn = document.getElementById('nian');
+  				yy.innerHTML= (m + 1) + "月";
+  				nn.innerHTML = y + "年";
+  				mycalendar(day.getFullYear(),day.getMonth(),day.getDate());
+  			});
+  			//头部时间更改
+  			document.getElementById("riqi").addEventListener("tap",function(){
+  				plus.nativeUI.pickDate(function(e){
+  					var d = e.date;
+  					var yy = document.getElementById("yue");
+	  				var nn = document.getElementById('nian');
+	  				yy.innerHTML= (d.getMonth()+1) + "月";
+	  				nn.innerHTML = d.getFullYear() + "年";
+  					mycalendar(d.getFullYear(),d.getMonth(),d.getDate());
+  				},function(e){
+  					console.log("未选择日期"+ e.message);
+  				});
+  			});
+  			//调用万年历
+  			wnli(day.getFullYear(),day.getMonth(),day.getDate());
+  			
+      	});
+      	
+		mui('.rili-main').on('tap','.day-tap',function(e){
+			s = e.target;
+			for (var i = 0;i<5;i++){			
+				if('day-tap day-1' == s.getAttribute('class')){
+					break;
+				}else if('day-tap day-0' == s.getAttribute('class')){
+					break;
+				}
+				s = s.parentNode;
+			}
+//			alert(s.getAttribute('class'));
+//			alert(s.innerHTML);
+//			alert(s.childNodes[1].innerText);
+			//改变点击日期状态
+			dianji(s,day);
+			//获取万年历数据
+			w = s.childNodes[1].childNodes[0];
+			wnli(w.getAttribute('nian'),w.getAttribute('yue')-1,w.innerText);
+		});
+		document.getElementById('calendar').addEventListener('tap',function(){
+			var	shang = plus.webview.create('menu.html','menu','zoom-fade-out');
+			shang.show();
+		});
+		document.getElementById('about').addEventListener('tap',function(){
+			var	newweb = plus.webview.create('about.html','about','zoom-fade-out');
+			newweb.show();
+		});
+		document.getElementById('shang').addEventListener('tap',function(){
+			var	shang = plus.webview.create('shang.html','shang','zoom-fade-out');
+			shang.show();
+		});
+		document.getElementById('update').addEventListener('tap',function(){
+			
+			
+		});
+    </script>
+	
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">日历设置</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+			    <li class="mui-table-view-cell">
+			    	 <div class="mui-input-row">
+				        <label>白班第一天</label>
+				    	<input id="starttime" type="text" class="mui-input-clear" placeholder="格式：2016-01-01">
+				    </div>
+			    </li>
+			    <li class="mui-table-view-cell">
+			    	<div class="mui-button-row">
+				        <button type="button" class="mui-btn mui-btn-primary" id="enter" onclick="save()" >确认</button>
+				        <!--<button type="button" class="mui-btn mui-btn-danger" >取消</button>-->
+				    </div>
+			    </li>
+			    <!--<li class="mui-table-view-cell">Item 3</li>
+			</ul>-->
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function(){
+				var yy = plus.storage.getItem("date-year");
+				if(yy != null){
+					document.getElementById('starttime').value = plus.storage.getItem("date-year")+'-'+plus.storage.getItem("date-month")+'-'+plus.storage.getItem("date-day");
+				}
+			});
+//			plus.ready(function(){
+//				var yy = plus.storage.getItem("date-year");
+//				if(yy != null){
+//					document.getElementById('starttime').value = plus.storage.getItem("date-year")+'-'+plus.storage.getItem("date-month")+'-'+plus.storage.getItem("date-day");
+//				}
+//			});
+			
+			function save(){
+				var stime = document.getElementById('starttime').value;
+				if (stime == null){
+					return ;
+				}
+				var y = stime.split('-'); 
+				void plus.storage.setItem('date-year',y[0] );
+				void plus.storage.setItem('date-month',y[1] );
+				void plus.storage.setItem('date-day',y[2] );
+				alert('请点击头部"今"标志，刷新数据');
+//				plus.webview.close('menu','slide-out-right');
+				mui.back();
+			}
+		</script>
+	</body>
+
+</html>

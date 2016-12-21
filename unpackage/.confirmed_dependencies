@@ -1,0 +1,48 @@
+{
+  "index.html": {
+    "resources": [
+      "css/main.css",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "js/rili.js",
+      "fonts/mui.ttf",
+      "css/font-awesome.min.css",
+      "js/function.js"
+    ],
+    "refer": [
+      "about.html",
+      "shang.html",
+      "menu.html"
+    ]
+  },
+  "about.html": {
+    "resources": [
+      "img/erweima.png",
+      "css/main.css",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/font-awesome.min.css",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "shang.html": {
+    "resources": [
+      "img/pay.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "img/erweima.png",
+      "img/pay2.png"
+    ],
+    "refer": []
+  },
+  "menu.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  }
+}
