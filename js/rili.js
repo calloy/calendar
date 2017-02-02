@@ -580,7 +580,13 @@ function firstDay(y,m){
 function huanban(y,m,d){
 	//每个班次为4天
 	var nian = plus.storage.getItem("date-year");
-	var yue = plus.storage.getItem("date-month");
+	/*
+	 * 2017-2-2
+	 * 统一使用日期格式为系统日期，也就是月份是 0-11
+	 * var yue = plus.storage.getItem("date-month");
+	*/
+	var yue = plus.storage.getItem("date-month")-1;
+	
 	var ri = plus.storage.getItem("date-day");
 	if (nian != null){
 		var banci = new Date(nian,yue,ri);
